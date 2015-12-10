@@ -1,0 +1,15 @@
+.carousel-text-item{
+    color: rgba(0,121,200,0.3); //$color-cyan transparent
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding:10px 10px;
+
+    &.upper{
+        text-transform: uppercase;
+    }
+
+    .menu-carousel li.active &{
+        color: $color-cyan;
+    }
+}

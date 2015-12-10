@@ -1,0 +1,17 @@
+<div class="carousel-generic receipt" ng-click="itemCarousel.onSelect({item:itemCarousel.ngModel})">
+    <div class="circle">
+        <div class="wrapper">
+            <span class="month" ng-bind="::itemCarousel.ngModel.strMonth"></span>
+            <span class="price">
+                <span ng-bind="::itemCarousel.ngModel.price.integer"></span><sup ng-bind="::itemCarousel.ngModel.price.decimal"></sup>
+                <span class="indic-euro1">€</span>
+            </span>
+            <span class="indic"><span ng-class="{'paid':true}"></span></span>
+            <span class="indic-euro2">EUR</span>
+
+            <div class="icon" ng-class="{'paid':itemCarousel.ngModel.estado === 'COBRADO'}" ng-if="(itemCarousel.ngModel.tipoRecibo === 'COBROS') || (itemCarousel.ngModel.tipoRecibo === 'PAGOS')">
+                <i ng-class="::[{'icon-san san-info':itemCarousel.ngModel.estado !== 'COBRADO', 'ion-ios-checkmark':itemCarousel.ngModel.estado === 'COBRADO'}]"></i>
+            </div>
+        </div>
+    </div>
+</div>

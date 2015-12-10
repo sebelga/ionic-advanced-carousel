@@ -1,0 +1,94 @@
+.advanced-carousel {
+    position: relative;
+
+    .scroll-view {
+        width: 100%;
+
+        &.show-scrollbar {
+            & .scroll-bar-h {
+                display: block;
+            }
+        }
+    }
+
+    .scroll-bar-h {
+        display: none;
+    }
+
+    & nav {
+        overflow-x: hidden;
+        overflow-y: hidden;
+
+        -webkit-overflow-scrolling: touch;
+
+        & ul {
+            float: left;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            &:after {
+                display: inline-block;
+                width: 100%;
+                content: '';
+            }
+
+            & li {
+                display: inline-block;
+                margin: 0;
+                text-align: center;
+                vertical-align: top;
+            }
+        }
+    }
+
+    .carousel-item.animateIn {
+        &.ng-enter {
+            transition: .2s linear opacity;
+            opacity: 0;
+
+            &.ng-enter-active {
+                opacity: 1;
+            }
+        }
+
+        &.ng-enter-stagger {
+            transition-delay: .11s;
+            transition-duration: 0s;
+        }
+    }
+
+    .spinner-wrapper {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    .pullrefresh-indicator {
+        position: absolute;
+        top: calc(50% - 16px);
+        right: -35px;
+        stroke: #ddd;
+        z-index: 1;
+
+        background: rgba(230, 230, 230, 0.8);
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        text-align: center;
+        padding-top: 6px;
+        box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.35);
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+}
