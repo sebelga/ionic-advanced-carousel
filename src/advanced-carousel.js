@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('sebelga.ionic')
+        .module('sebelga.ionic', [])
         .directive('aCarousel', advancedCarousel);
 
     advancedCarousel.$inject = ['$compile', '$timeout', '$ionicScrollDelegate'];
@@ -21,7 +21,6 @@
                 onSelect       : '&'
             }
         };
-
 
         /////////
 
