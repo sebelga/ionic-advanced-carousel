@@ -21,5 +21,15 @@
     "url": "https://github.com/sebloix/ionic-advanced-carousel/issues"
   },
   "homepage": "https://github.com/sebloix/ionic-advanced-carousel#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglifyjs": "^0.6.2",
+    "gulp-util": "^3.0.7",
+    "jshint-stylish": "^2.1.0"
+  }
 }

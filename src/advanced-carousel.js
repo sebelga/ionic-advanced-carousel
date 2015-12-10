@@ -9,6 +9,7 @@
     function advancedCarousel($compile, $timeout, $ionicScrollDelegate) {
         return {
             restrict        : 'E',
+            replace         : true,
             template        : '',
             scope           : {},
             link            : linkFunc,
@@ -34,7 +35,7 @@
 
             // Dynamic directive html
             // ----------------------
-            var html = '<div class="menu-carousel">';
+            var html = '<div class="a-carousel">';
 
             if (ctrl.options.pullRefresh.active) {
                 html += '<div class="spinner-wrapper" ng-if="vm.options.pullRefresh.loading"><ion-spinner icon="android"></ion-spinner></div>';
@@ -58,12 +59,12 @@
                 '<nav style="visibility:hidden;">' +
                 '<ul> <li ' +
                 'ng-repeat="item in vm.arrayProvider track by ' +
-            ctrl.options.trackBystr + '"' +
-            'class="carousel-item' + animateIn + '"' +
-            'ng-class="{\'active\':vm.itemActive == ' + ctrl.options.trackBystr + '}">' +
-            createItemDirective() +
-            '</li>' +
-            '</ul></nav></ion-scroll></div>';
+                ctrl.options.trackBystr + '"' +
+                'class="carousel-item' + animateIn + '"' +
+                'ng-class="{\'active\':vm.itemActive === item}">' +
+                createItemDirective() +
+                '</li>' +
+                '</ul></nav></ion-scroll></div>';
 
             // Compile dynamic template
             html = $compile(html)(scope);
@@ -81,7 +82,7 @@
             }, 0);
 
             function createItemDirective() {
-                var template = typeof ctrl.options.template !== 'undefined' ? 'template="' + ctrl.options.template + '"' : '';
+                var template = ctrl.options.template !== null ? 'template="' + ctrl.options.template + '"' : '';
 
                 var directive = '<' + ctrl.itemDirective + ' ng-model="item" ' + template +
                     'on-select="vm.selectItem(item)" carousel-options="menuCarousel.options" ';
@@ -119,18 +120,19 @@
         }
     }
 
-    Controller.$inject = ['$scope', '$element', '$timeout', '$window', '$ionicScrollDelegate']
+    Controller.$inject = ['$scope', '$element', '$timeout', '$window', '$ionicScrollDelegate'];
     function Controller($scope, $element, $timeout, $window, $ionicScrollDelegate) {
         var vm = this;
 
         vm.options = {
             showScroll    : false,
             carouselId    : 'my-carousel',
+            template      : null,
             align         : 'left',
             centerOnSelect: true,
             widthItem     : 0,
             heightItem    : 0,
-            trackBy       : 'id',
+            trackBy       : '$index',
             selectFirst   : true,
             selectAtStart : {
                 property: null,
@@ -139,15 +141,16 @@
             },
             pullRefresh   : {
                 active  : false,
-                callBack: angular.noop
+                callBack: angular.noop,
+                loading:false
             },
             animateIn     : false
         };
 
         // API
-        vm.initCarousel  = initCarousel;
-        vm.selectItem    = selectItem;
-        vm.onScroll      = onScroll;
+        vm.initCarousel = initCarousel;
+        vm.selectItem   = selectItem;
+        vm.onScroll     = onScroll;
 
         activate();
 
@@ -156,7 +159,20 @@
         function activate() {
             angular.extend(vm.options, vm.carouselOptions);
 
-            $scope.$on('acarousel.arrayupdated', function (event, param) {
+            $scope.$on('a-carousel.arrayupdated', onArrayProviderUpdated);
+            $scope.$on('a-carousel.desactivateItem', desactiveItemSelected);
+
+            if (vm.options.pullRefresh.active) {
+                $scope.$on('a-carousel.pullrefresh.done', onEndRefresh);
+            }
+
+            //////////
+            /**
+             *
+             * @param e
+             * @param {{carouselId:string}} param
+             */
+            function onArrayProviderUpdated(e, param) {
                 var carouselId;
                 if (typeof param === 'object') {
                     carouselId = param.carouselId;
@@ -168,24 +184,22 @@
                 if (carouselId === vm.options.carouselId) {
                     $timeout(vm.initCarousel, 0);
                 }
-            });
+            }
 
-            $scope.$on('acarousel.desactivateItem', function (e, param) {
+            /**
+             *
+             * @param e
+             * @param {{idContains:string, except:string}} param
+             */
+            function desactiveItemSelected(e, param) {
                 var idContains = param.idContains;
                 var except     = param.except;
 
                 if (vm.options.carouselId.indexOf(idContains) >= 0 && vm.options.carouselId !== except) {
                     vm.itemActive = null;
                 }
-            });
-
-            if (vm.options.pullRefresh.active) {
-                vm.options.pullRefresh.loading = false;
-
-                $scope.$on('pullrefresh.done', onEndRefresh);
             }
         }
-
 
         function initCarousel() {
             var carouselItems = $element.find('li');
@@ -198,7 +212,7 @@
 
             var index              = 0;
             var numTimesDomChecked = 0;
-            var numRetry           = 15;
+            var numRetryBuild           = 15;
 
             vm.itemActive = null;
 
@@ -220,7 +234,7 @@
                 } else {
                     console.log('[INFO] Creating Carousel but DOM not ready yet...');
 
-                    if (numTimesDomChecked < numRetry) {
+                    if (numTimesDomChecked < numRetryBuild) {
                         $timeout(function () {
                             checkDOM();
                         }, 50);
@@ -237,7 +251,7 @@
                 var modelItem;
 
                 angular.forEach(carouselItems, function (item) {
-                    modelItem = vm.arrayProvider[index];
+                    modelItem            = vm.arrayProvider[index];
                     modelItem.carouselId = vm.options.carouselId;
 
                     widthCarousel += item.offsetWidth;
@@ -327,12 +341,9 @@
 
             setItemActive(item);
 
-            // Callback on select
-            vm.onSelect.call(null, {item: item});
-
             // Center carousel
             if (vm.options.centerOnSelect) {
-                var index = getIndexFromId(item[vm.options.trackBy]);
+                var index = getIndexFromId(item);
 
                 scrollPos = 0;
 
@@ -385,13 +396,17 @@
         // PRIVATE
         // ----------
         function setItemActive(item) {
-            vm.itemActive = item[vm.options.trackBy];
-            $scope.$broadcast('acarousel.itemselected', item);
+            vm.itemActive = item;
+
+            // Callback on select
+            vm.onSelect.call(null, {item: item});
+
+            $scope.$broadcast('a-carousel.itemselected', item);
         }
 
-        function getIndexFromId(id) {
+        function getIndexFromId(item) {
             for (var i in vm.arrayProvider) {
-                if (vm.arrayProvider[i][vm.options.trackBy] === id) {
+                if (vm.arrayProvider[i] === item) {
                     return i;
                 }
             }

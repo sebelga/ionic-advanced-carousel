@@ -1,0 +1,12 @@
+.a-carousel-text-item{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding:10px 10px;
+    color: #333;
+    font-size:16px;
+
+    .a-carousel li.active &{
+        color: red;
+    }
+}
