@@ -32,7 +32,7 @@
                 <h2>Text examples</h2>
                 <div class="pma">
                     <label>
-                        Option: select only one at the time ?
+                        <strong>Option:</strong> Only one carousel at the time ?
                         <input type="checkbox" name="unselectothers" ng-model="vm.options.unselectOthers" />
                     </label>
                     <p>Selection: <strong>{{vm.itemSelected.display}}</strong></p>
@@ -43,7 +43,7 @@
                     <a-carousel
                             item-directive="carousel-text-item"
                             carousel-options="::vm.carouselOptions1"
-                            array-provider="::vm.carouselData"
+                            array-provider="::vm.carouselData1"
                             on-select="vm.onSelectCarousel(item)">
                     </a-carousel>
                 </div>
@@ -53,7 +53,7 @@
                     <a-carousel
                             item-directive="carousel-text-item"
                             carousel-options="::vm.carouselOptions2"
-                            array-provider="::vm.carouselData"
+                            array-provider="::vm.carouselData2"
                             on-select="vm.onSelectCarousel(item)">
                     </a-carousel>
                 </div>
@@ -63,7 +63,7 @@
                     <a-carousel
                             item-directive="carousel-text-item"
                             carousel-options="::vm.carouselOptions3"
-                            array-provider="::vm.carouselData2"
+                            array-provider="::vm.carouselData3"
                             on-select="vm.onSelectCarousel(item)">
                     </a-carousel>
                 </div>
@@ -72,23 +72,46 @@
             <h2>Custom template</h2>
                 <div id="carousel-4" class="carousel-wrapper">
                     <a-carousel
-                            item-directive="carousel-generic-item"
                             carousel-options="::vm.carouselOptions4"
-                            array-provider="::vm.carouselData2"
+                            array-provider="::vm.carouselData4"
                             on-select="vm.onSelectCarousel(item)">
                     </a-carousel>
                 </div>
 
-                <div id="carousel-4" class="carousel-wrapper">
+                <div id="carousel-5" class="carousel-wrapper">
                     <a-carousel
-                            item-directive="carousel-generic-item"
                             carousel-options="::vm.carouselOptions5"
-                            array-provider="::vm.carouselData3"
+                            array-provider="::vm.carouselData5"
                             on-select="vm.onSelectCarousel(item)">
                     </a-carousel>
                 </div>
             </section>
-            <h2>Pull Refresh</h2>
+            <section>
+                <h2>Add items to carousel</h2>
+                <p class="pma">
+                    <strong>Example 1</strong><br>
+                    Pull refresh to add element at the end of carousel.
+                </p>
+                <div id="carousel-5" class="carousel-wrapper">
+                    <a-carousel
+                            carousel-options="::vm.carouselOptions6"
+                            array-provider="::vm.carouselData6"
+                            on-select="vm.onSelectCarousel(item)">
+                    </a-carousel>
+                </div>
+
+                <p class="pma">
+                    <strong>Example 2</strong><br>
+                    <button class="button" ng-click="vm.addItemsCarousel(4)">Add 4 items</button>
+                </p>
+                <div id="carousel-6" class="carousel-wrapper">
+                    <a-carousel
+                            carousel-options="::vm.carouselOptions7"
+                            array-provider="::vm.carouselData7"
+                            on-select="vm.onSelectCarousel(item)">
+                    </a-carousel>
+                </div>
+            </section>
         </ion-content>
     </ion-pane>
 </body>

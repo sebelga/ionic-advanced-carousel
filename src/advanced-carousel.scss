@@ -1,4 +1,4 @@
-@import "items/carousel-text-item";
+@import "carousel-text-item";
 
 .a-carousel {
     position: relative;
@@ -76,7 +76,7 @@
         position: absolute;
         top: calc(50% - 16px);
         right: -35px;
-        stroke: #ddd;
+        stroke: #000;
         z-index: 1;
 
         background: rgba(230, 230, 230, 0.8);

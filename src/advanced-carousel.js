@@ -82,7 +82,7 @@
 
             function createItemDirective() {
                 var template = ctrl.options.template !== null ? 'template="' + ctrl.options.template + '"' : '';
-
+                ctrl.itemDirective = typeof ctrl.itemDirective === 'undefined' ? 'carousel-generic-item' : ctrl.itemDirective;
                 var directive = '<' + ctrl.itemDirective + ' ng-model="item" ' + template +
                     'on-select="vm.selectItem(item)" carousel-options="menuCarousel.options" ';
                 directive += '></' + ctrl.itemDirective + '>';
@@ -329,7 +329,7 @@
 
                 // Cache pull refresh DOM elements (both wrapper and svg elem)
                 if (vm.options.pullRefresh.active) {
-                    vm.pullrefreshIndicator = angular.element(document.querySelector('.menu-carousel .pullrefresh-indicator'));
+                    vm.pullrefreshIndicator = angular.element(document.querySelector('.a-carousel .pullrefresh-indicator'));
                     vm.svgElem              = $element.find('g');
                 }
             }

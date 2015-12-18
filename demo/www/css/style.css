@@ -14,7 +14,10 @@
     padding:15px;
 }
 section{
-    margin:30px 0;
+    margin:60px 0 30px;
+}
+section:first-child{
+    margin-top:20px;
 }
 h2 {
     text-align:center;
@@ -31,7 +34,7 @@ input[type="checkbox"] {
     margin-bottom: 40px;
 }
 
-#carousel-4{
+#carousel-4, #carousel-5{
     background-color:transparent;
 }
 
@@ -95,4 +98,17 @@ input[type="checkbox"] {
 }
 .a-carousel li.active .carousel-item.demo-2  > span {
     color: #222;
+}
+
+.carousel-item.demo-3 .img-wrapper{
+    background-color: white;
+    width: 120px;
+    height:80px;
+}
+
+.carousel-item.demo-3 img {
+    opacity:.5;
+}
+.a-carousel li.active .carousel-item.demo-3 img{
+    opacity: 1;
 }
