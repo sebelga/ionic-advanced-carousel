@@ -5,8 +5,13 @@
         .module('app')
         .controller('AppController', AppController);
 
-    function AppController() {
+    AppController.$inject = ['$scope'];
+    function AppController($scope) {
         var vm = this;
+
+        vm.options = {
+            unselectOthers:false
+        };
 
         // Carousel Options
         vm.carouselOptions1 = {
@@ -23,7 +28,6 @@
             centerOnSelect:true
         };
 
-
         vm.carouselOptions3 = {
             carouselId:'carousel-3',
             align:'left',
@@ -33,14 +37,21 @@
 
         vm.carouselOptions4 = {
             carouselId:'carousel-4',
-            align:'center',
-            selectFirst:false,
+            align:'left',
+            selectFirst:true,
             centerOnSelect:true,
-            template:'demo'
+            template:'carousel-templates/demo-1.html'
+        };
+
+        vm.carouselOptions5 = {
+            carouselId:'carousel-5',
+            align:'center',
+            selectFirst:true,
+            centerOnSelect:true,
+            template:'carousel-templates/demo-2.html'
         };
 
         vm.onSelectCarousel = onSelectCarousel;
-
         activate();
 
         function activate() {
@@ -48,6 +59,7 @@
             // Mock data for carousel
             vm.carouselData  = createArray(20);
             vm.carouselData2 = createArray(5);
+            vm.carouselData3 = createArray(3);
 
             function createArray(total) {
                 var i, model, arr = [];
@@ -67,8 +79,14 @@
         }
 
         function onSelectCarousel(item) {
-            // console.log('Carousel item selected:', item);
+            console.log('Carousel item selected:', item);
+
             vm.itemSelected = item;
+            if (vm.options.unselectOthers) {
+                $scope.$broadcast('a-carousel.desactivateItem', {idContains:'carousel-', except:item.carouselId})
+                console.log('Unselect others...');
+            }
         }
+
     }
 }());

@@ -9,13 +9,13 @@ var rename = require("gulp-rename");
 // var jshint = require('gulp-jshint');
 
 gulp.task('watch', function() {
-    gulp.watch(['src/*.js', 'src/items/carousel-text-item.js'], ['compile-js']);
+    gulp.watch(['src/**/*.js'], ['compile-js']);
     gulp.watch('src/**/*.scss', ['build-styles']);
-    gulp.watch(['src/items/**/*.*'], ['copy-items']);
+    //gulp.watch(['src/custom-directives/**/*.*'], ['copy-items']);
 });
 
 gulp.task('compile-js', function() {
-    return gulp.src(['src/*.js', 'src/items/carousel-text-item.js'])
+    return gulp.src(['src/**/*.js'])
             .pipe(sourcemaps.init())
             .pipe(concat('advanced-carousel.min.js'))
             .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop())  // gulp --type production
@@ -33,10 +33,10 @@ gulp.task('build-styles', function() {
         .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('copy-items', function() {
-    gulp.src(['src/items/*.js', 'src/items/*.html', '!src/items/carousel-text-item.js'], {base:'src/'})
-        .pipe(gulp.dest('dist/'))
-});
+//gulp.task('copy-items', function() {
+//    gulp.src(['src/custom-directives/*.js', 'src/custom-directives/*.html', '!src/custom-directives/carousel-text-item.js'], {base:'src/'})
+//        .pipe(gulp.dest('dist/'))
+//});
 
 gulp.task('default', ['watch']);
 

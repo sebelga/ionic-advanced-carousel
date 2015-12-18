@@ -54,8 +54,7 @@
             }
 
             html += 'scrollbar-x="false" delegate-handle="' + ctrl.options.carouselId + '" ' +
-                'zooming="false" direction="x" has-bouncing="true" ' +
-                'ng-class="::{\'show-scrollbar\':vm.options.showScroll}">' +
+                'zooming="false" direction="x" has-bouncing="true">' +
                 '<nav style="visibility:hidden;">' +
                 '<ul> <li ' +
                 'ng-repeat="item in vm.arrayProvider track by ' +

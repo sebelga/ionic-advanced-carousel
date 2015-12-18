@@ -8,11 +8,7 @@
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
-    <!-- ionic/angularjs js -->
+    <!-- ionic & angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
@@ -22,67 +18,78 @@
     <link rel="stylesheet" href="../lib/ionic-advanced-carousel/dist/advanced-carousel.min.css">
     <script src="../lib/ionic-advanced-carousel/dist/advanced-carousel.min.js"></script>
 
-    <!--Generic Item-->
-    <link rel="stylesheet" href="../lib/ionic-advanced-carousel/dist/items/carousel-item-demo.min.css">
-    <script src="../lib/ionic-advanced-carousel/dist/items/carousel-generic-item.js"></script>
-
-
-    <!-- your app's js -->
+    <!-- app js -->
     <script src="js/app.js"></script>
     <script src="js/main.controller.js"></script>
 </head>
 <body ng-app="app">
+    <ion-pane ng-controller="AppController as vm">
+        <ion-header-bar class="bar-stable">
+            <h1 class="title">Demo Advanced Carousel</h1>
+        </ion-header-bar>
+        <ion-content class="main-view">
+            <section>
+                <h2>Text examples</h2>
+                <div class="pma">
+                    <label>
+                        Option: select only one at the time ?
+                        <input type="checkbox" name="unselectothers" ng-model="vm.options.unselectOthers" />
+                    </label>
+                    <p>Selection: <strong>{{vm.itemSelected.display}}</strong></p>
+                </div>
 
-<ion-pane ng-controller="AppController as vm">
-    <ion-header-bar class="bar-stable">
-        <h1 class="title">Demo Advanced Carousel</h1>
-    </ion-header-bar>
-    <ion-content class="main-view">
-        <h2>Text examples</h2>
-        <p class="text-center">Selection: <strong>{{vm.itemSelected.display}}</strong></p>
+                <div class="info">Center on select, align left</div>
+                <div id="carousel-1" class="carousel-wrapper">
+                    <a-carousel
+                            item-directive="carousel-text-item"
+                            carousel-options="::vm.carouselOptions1"
+                            array-provider="::vm.carouselData"
+                            on-select="vm.onSelectCarousel(item)">
+                    </a-carousel>
+                </div>
 
-        <div class="info">Center on select, align left</div>
-        <div id="carousel-1" class="carousel-wrapper">
-            <a-carousel
-                    item-directive="carousel-text-item"
-                    carousel-options="::vm.carouselOptions1"
-                    array-provider="::vm.carouselData"
-                    on-select="vm.onSelectCarousel(item)">
-            </a-carousel>
-        </div>
+                <div class="info">Center on select, align right</div>
+                <div id="carousel-2" class="carousel-wrapper">
+                    <a-carousel
+                            item-directive="carousel-text-item"
+                            carousel-options="::vm.carouselOptions2"
+                            array-provider="::vm.carouselData"
+                            on-select="vm.onSelectCarousel(item)">
+                    </a-carousel>
+                </div>
 
-        <div class="info">Center on select, align right</div>
-        <div id="carousel-2" class="carousel-wrapper">
-            <a-carousel
-                    item-directive="carousel-text-item"
-                    carousel-options="::vm.carouselOptions2"
-                    array-provider="::vm.carouselData"
-                    on-select="vm.onSelectCarousel(item)">
-            </a-carousel>
-        </div>
+                <div class="info">Don't center on select, align left, don't select at start</div>
+                <div id="carousel-3" class="carousel-wrapper">
+                    <a-carousel
+                            item-directive="carousel-text-item"
+                            carousel-options="::vm.carouselOptions3"
+                            array-provider="::vm.carouselData2"
+                            on-select="vm.onSelectCarousel(item)">
+                    </a-carousel>
+                </div>
+            </section>
+            <section>
+            <h2>Custom template</h2>
+                <div id="carousel-4" class="carousel-wrapper">
+                    <a-carousel
+                            item-directive="carousel-generic-item"
+                            carousel-options="::vm.carouselOptions4"
+                            array-provider="::vm.carouselData2"
+                            on-select="vm.onSelectCarousel(item)">
+                    </a-carousel>
+                </div>
 
-        <div class="info">Don't center on select, align left, don't select at start</div>
-        <div id="carousel-3" class="carousel-wrapper">
-            <a-carousel
-                    item-directive="carousel-text-item"
-                    carousel-options="::vm.carouselOptions3"
-                    array-provider="::vm.carouselData"
-                    on-select="vm.onSelectCarousel(item)">
-            </a-carousel>
-        </div>
-
-        <h2>Custom template</h2>
-        <div id="carousel-4" class="carousel-wrapper">
-            <a-carousel
-                    item-directive="carousel-generic-item"
-                    carousel-options="::vm.carouselOptions4"
-                    array-provider="::vm.carouselData2"
-                    on-select="vm.onSelectCarousel(item)">
-            </a-carousel>
-        </div>
-
-        <h2>Pull Refresh</h2>
-    </ion-content>
-</ion-pane>
+                <div id="carousel-4" class="carousel-wrapper">
+                    <a-carousel
+                            item-directive="carousel-generic-item"
+                            carousel-options="::vm.carouselOptions5"
+                            array-provider="::vm.carouselData3"
+                            on-select="vm.onSelectCarousel(item)">
+                    </a-carousel>
+                </div>
+            </section>
+            <h2>Pull Refresh</h2>
+        </ion-content>
+    </ion-pane>
 </body>
 </html>
