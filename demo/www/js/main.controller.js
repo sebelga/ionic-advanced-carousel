@@ -114,7 +114,7 @@
 
             // unselect all carousel with id that contains string except one
             if (vm.options.unselectOthers) {
-                $scope.$broadcast('a-carousel.desactivateItem', {idContains:'carousel-', except:item.carouselId})
+                $scope.$broadcast('a-carousel.desactivateItem', {idContains:'carousel-', except:item.carouselId});
             }
         }
 
