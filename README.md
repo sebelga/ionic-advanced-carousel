@@ -6,6 +6,13 @@ To be able to see the demo correctly you need to see the page in device mode / m
         [Chrome here](https://developer.chrome.com/devtools/docs/device-mode) and for [Firefox here](https://developer.mozilla.org/en/docs/Tools/Responsive_Design_View)
   - [GitHub](http://sebelga.github.io/ionic-advanced-carousel/demo)
 
+To test the demo locally
+```
+cd demo
+bower install
+ionic serve
+```
+
 ## Usage
 
   - If you use [bower](http://bower.io/), just `bower install ionic-advanced-carousel`. If not, download files [from the github repo](./dist).
