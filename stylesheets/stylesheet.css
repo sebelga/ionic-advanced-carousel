@@ -34,6 +34,16 @@ a {
   background-color: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.3); }
 
+.btn.inverse{
+  color: rgba(121,206,152, 0.7);
+  background-color: rgba(121,206,152, 0.08);
+  border-color: rgba(121,206,152, 0.2);
+}
+.btn.inverse:hover{
+  color: rgba(121,206,152, 0.8);
+  background-color: rgba(121,206,152, 0.2);
+  border-color: rgba(121,206,152, 0.3);
+}
 @media screen and (min-width: 64em) {
   .btn {
     padding: 0.75rem 1rem; } }
@@ -53,6 +63,9 @@ a {
       margin-top: 1rem;
       margin-left: 0; } }
 
+.text-center{
+  text-align: center;
+}
 .page-header {
   color: #fff;
   text-align: center;
