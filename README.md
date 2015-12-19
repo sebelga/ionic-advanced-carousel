@@ -32,8 +32,8 @@ To be able to see the demo correctly you need to see the page in device mode / m
   
   ### Directive parameters
   - array-provider: an array of object which will serve as 'model' for your carousel items so you can bind any value.
-  - item-directive (optional): the name of the directive you want to use as an item
-  1 directives item is already packed inside the advanced carousel: 'carousel-text-item' for simple text display. To use this carousel-text-item, just pass it to the directive and the carousel will look for a 'display' property on the object pass through array-provider. If you don't set this parameter you must indicate a templateUrl through the options (see below).
+  - item-directive (optional): the name of the directive you want to use as an item.
+  One directives item is already included inside the advanced carousel: 'carousel-text-item' for simple text display. To use this text item, just pass it to the directive and the carousel will look for a 'display' property on the object pass through array-provider. If you don't set this parameter you must indicate a templateUrl through the options (see below). `[{id:0, display'item1'}, ...]`
   - carousel-options: a set of options to initiate the carousel. See example below. Don't forget the :: for one-time binding.
   - on-select: method to be called when an item is selected
   
@@ -55,5 +55,5 @@ var options = {
         callBack: angular.noop
     }
 };
-'''
+```
 
