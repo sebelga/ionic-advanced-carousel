@@ -2,3 +2,5 @@
 bower_components
 .sass-cache
 *.log
+
+node_modules/
