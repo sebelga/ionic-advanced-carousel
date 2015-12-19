@@ -4,3 +4,4 @@ bower_components
 *.log
 
 node_modules/
+_site
