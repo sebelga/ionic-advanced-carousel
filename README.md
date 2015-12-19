@@ -38,7 +38,7 @@ If you don't set this parameter you must indicate a templateUrl through the opti
 - carousel-options: a set of options to initiate the carousel. See example below. Don't forget the :: for one-time binding.
 - on-select: method to be called when an item is selected
   
- ### Carousel options (with default value)
+  ### Carousel options (with default value)
 ```js
 var options = {
     carouselId    : 'my-carousel', // unique id for the carousel
@@ -57,7 +57,7 @@ var options = {
     }
 };
 ```
- ### Events
+  ### Events
  After you make a change to the array provider, broadcast the 'a-carousel.arrayupdated' event passing the carousel id to update the carousel.
  ```js
  $scope.$broadcast('a-carousel.arrayupdated', 'my-carousel-id');
@@ -69,7 +69,7 @@ $scope.$broadcast('a-carousel.pullrefresh.done');
 To desactive a carousel item.
 ```js
 var params {
-    idContains:'carousel-', // this will unselect all carousel with an id that contains carousel- (ex: carousel-1, carousel-2, carousel-3)
+    idContains:'carousel-', // this will unselect all carousel with an id that contains "carousel-" (ex: carousel-1, carousel-2, carousel-3)
     except:'carousel-1' // but will not touch at carousel-1
 }
 $scope.$broadcast('a-carousel.desactivateItem', params);
