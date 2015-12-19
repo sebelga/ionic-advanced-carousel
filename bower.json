@@ -5,6 +5,7 @@
     "dist/advanced-carousel.min.js",
     "dist/advanced-carousel.min.css"
   ],
+  "version":"1.0.0",
   "authors": [
     "Sébastien Loix"
   ],
