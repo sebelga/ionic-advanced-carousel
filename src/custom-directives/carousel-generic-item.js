@@ -13,10 +13,6 @@
             restrict        : 'E',
             replace         : true,
             templateUrl     : function (elem, attr) {
-                //if (!attr.template) {
-                //    throw Error('Template missing for advanced carousel item');
-                //}
-                //return currentScriptPath.replace('carousel-generic-item.js', 'carousel-generic-' + attr.template + '.html');
                 return attr.template;
             },
             scope           : {},
