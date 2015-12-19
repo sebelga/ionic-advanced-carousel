@@ -5,7 +5,7 @@
     var currentScriptPath = scripts[scripts.length-1].src;
 
     angular
-        .module('sebelga.ionic')
+        .module('aCarousel')
         .directive('carouselGenericItem', carouselGenericItem);
 
     function carouselGenericItem() {

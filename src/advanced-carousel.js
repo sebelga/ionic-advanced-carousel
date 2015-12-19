@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('sebelga.ionic', [])
+        .module('aCarousel', [])
         .directive('aCarousel', advancedCarousel);
 
     advancedCarousel.$inject = ['$compile', '$timeout', '$ionicScrollDelegate'];
