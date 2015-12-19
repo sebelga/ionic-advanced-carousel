@@ -47,7 +47,7 @@ var options = {
     centerOnSelect: true, // center carousel when an item is selected
     trackBy       : '$index',  // indicate a track by property
     selectFirst   : true, // select first carousel item at start
-    selectAtStart : {    // Select at start the item with the property (string) with value passed
+    selectAtStart : {    // optional => Select at start the item with the property (string) with value passed
         property: null,
         value   : null
     },
@@ -57,4 +57,20 @@ var options = {
     }
 };
 ```
-
+ ### Events
+ After you make a change to the array provider, broadcast the 'a-carousel.arrayupdated' event passing the carousel id to update the carousel.
+ ```js
+ $scope.$broadcast('a-carousel.arrayupdated', 'my-carousel-id');
+ ```
+At the end of a pull refresh callback
+```js
+$scope.$broadcast('a-carousel.pullrefresh.done');
+```
+To desactive a carousel item.
+```js
+var params {
+    idContains:'carousel-', // this will unselect all carousel with an id that contains carousel- (ex: carousel-1, carousel-2, carousel-3)
+    except:'carousel-1' // but will not touch at carousel-1
+}
+$scope.$broadcast('a-carousel.desactivateItem', params);
+```
