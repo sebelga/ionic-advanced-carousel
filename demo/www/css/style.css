@@ -1,6 +1,6 @@
 
 .main-view{
-    padding: 30px 0;
+    padding-bottom: 30px;
 }
 .text-center{
     text-align: center;
@@ -10,33 +10,96 @@
     margin:5px;
     text-align: center;
 }
-.pma{
-    padding:15px;
+header {
+    padding:30px;
+    border-bottom: 4px solid #ddd;
+    text-align: center;
 }
+.options {
+    padding-left:30px;
+}
+.pma{padding:15px;}
+.pmt{padding-top:15px;}
+.pmb{padding-bottom:15px;}
+
+.pmh{
+    padding-left:15px;
+    padding-right:15px;
+}
+.pmv{
+    padding-top:15px;
+    padding-bottom:15px;
+}
+
 section{
     margin:60px 0 30px;
 }
 section:first-child{
-    margin-top:20px;
+    margin-top:30px;
 }
 h2 {
     text-align:center;
     font-size:18px;
     margin-bottom: 30px;
+    text-transform:uppercase;
 }
 
+.input-group{
+    line-height:45px;
+}
 input[type="checkbox"] {
-    font-size:24px;
+    display:none;
+}
+
+label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px;
+    margin-right: 15px;
+    font-size: 13px;
+}
+label:before {
+    content: "";
+    display: inline-block;
+
+    width: 16px;
+    height: 16px;
+
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    background-color: #aaa;
+    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+}
+
+
+.check label:before {
+    border-radius: 8px;
+}
+input[type=checkbox]:checked + label:before {
+    content: "\2022";
+    color: #f3f3f3;
+    font-size: 32px;
+    text-align: center;
+    line-height: 18px;
+}
+
+.scroll-bar-indicator
+{
+    display: none;
 }
 
 .carousel-wrapper{
     background-color:#eee;
     margin-bottom: 40px;
+    padding: 20px 0;
 }
 
-#carousel-4, #carousel-5{
-    background-color:transparent;
-}
+/*#carousel-4, #carousel-5{*/
+    /*background-color:transparent;*/
+/*}*/
 
 /* Template Demo 1 */
 .carousel-item.demo-1 {
@@ -90,7 +153,7 @@ input[type="checkbox"] {
     text-align:center;
     text-transform:uppercase;
     padding:0 5px;
-    color:#ddd;
+    color:#888;
 }
 
 .a-carousel li.active .carousel-item.demo-2 .dot {
