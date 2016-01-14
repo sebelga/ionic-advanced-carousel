@@ -15,8 +15,8 @@
     <script src="cordova.js"></script>
 
     <!--advanced carousel directive-->
-    <link rel="stylesheet" href="lib/ionic-advanced-carousel/dist/advanced-carousel.min.css">
-    <script src="lib/ionic-advanced-carousel/dist/advanced-carousel.min.js"></script>
+    <link rel="stylesheet" href="../lib/ionic-advanced-carousel/dist/advanced-carousel.min.css">
+    <script src="../lib/ionic-advanced-carousel/dist/advanced-carousel.min.js"></script>
 
     <!-- app js -->
     <script src="js/app.js"></script>
@@ -104,7 +104,7 @@
                                 on-select="vm.onSelectCarousel(item)">
                         </a-carousel>
                     </div>
-                    
+
                     <div id="carousel-6" class="carousel-wrapper">
                         <p class="pmh pmb">
                             Click <a href="#" ng-click="vm.addItemsCarousel(4)">here</a> to add 4 items to the carousel.
@@ -116,8 +116,15 @@
                         </a-carousel>
                     </div>
                 </section>
+
+                <section>
+                    <h2>Inside modal</h2>
+
+                    <button class="btn" ng-click="vm.openModal()">Open modal</button>
+                </section>
             </main>
         </ion-content>
     </ion-pane>
+
 </body>
 </html>
