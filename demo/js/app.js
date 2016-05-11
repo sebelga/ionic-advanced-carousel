@@ -2,7 +2,6 @@
     "use strict";
 
     angular.module('app', ['ionic', 'aCarousel'])
-
         .run(function ($ionicPlatform) {
             $ionicPlatform.ready(function () {
                 if (window.cordova && window.cordova.plugins.Keyboard) {
