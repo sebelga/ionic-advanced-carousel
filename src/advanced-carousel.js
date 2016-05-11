@@ -31,7 +31,7 @@
 
             ctrl.options.trackBy    = typeof attr.trackBy !== 'undefined' ? attr.trackBy : '$index';
             ctrl.options.trackBystr = ctrl.options.trackBy === '$index' ? '$index' : 'item.' + ctrl.options.trackBy;
-
+            ctrl.options.carouselId = typeof attr.carouselId !== 'undefined' ? attr.carouselId : ctrl.options.carouselId;
             var animateIn = ctrl.options.animateIn ? ' animateIn' : '';
 
             // Dynamic directive html
@@ -123,7 +123,6 @@
     Controller.$inject = ['$scope', '$element', '$timeout', '$window', '$ionicScrollDelegate'];
     function Controller($scope, $element, $timeout, $window, $ionicScrollDelegate) {
         var vm = this;
-
         vm.options = {
             showScroll    : false,
             carouselId    : 'my-carousel',
@@ -158,9 +157,6 @@
 
         function activate() {
             angular.extend(vm.options, vm.carouselOptions);
-            if (vm.carouselId) {
-                vm.options.carouselId = vm.carouselId
-            }
             $scope.$on('a-carousel.arrayupdated', onArrayProviderUpdated);
             $scope.$on('a-carousel.desactivateItem', desactiveItemSelected);
 
