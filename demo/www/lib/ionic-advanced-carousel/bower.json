@@ -1,0 +1,28 @@
+{
+  "name": "ionic-advanced-carousel",
+  "description": "Carousel directive for the Ionic Framework",
+  "main": [
+    "dist/advanced-carousel.min.js",
+    "dist/advanced-carousel.min.css"
+  ],
+  "version":"1.0.0",
+  "authors": [
+    "Sébastien Loix"
+  ],
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "Ionic",
+    "Angular",
+    "carousel",
+    "directive"
+  ],
+  "homepage": "https://github.com/sebelga/ionic-advanced-carousel",
+  "moduleType": ["angularjs"],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

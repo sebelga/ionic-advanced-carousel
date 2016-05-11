@@ -1,0 +1,10 @@
+{
+  "name": "Demo Advanced Carousel Ionic",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.1.1"
+  },
+  "dependencies": {
+    "ionic-advanced-carousel": "~1.0.0"
+  }
+}

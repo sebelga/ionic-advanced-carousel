@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- ionic & angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!--advanced carousel directive-->
+    <link rel="stylesheet" href="../lib/ionic-advanced-carousel/dist/advanced-carousel.min.css">
+    <script src="../lib/ionic-advanced-carousel/dist/advanced-carousel.min.js"></script>
+
+    <!-- app js -->
+    <script src="js/app.js"></script>
+    <script src="js/main.controller.js"></script>
+</head>
+<body ng-app="app">
+    <ion-pane ng-controller="AppController as vm">
+        <ion-header-bar class="bar-stable">
+            <h1 class="title">Demo Advanced Carousel</h1>
+        </ion-header-bar>
+        <ion-content class="main-view">
+            <header>
+                Current selection: <strong>{{vm.itemSelected.display}}</strong>
+            </header>
+            <div class="options">
+                <!--<strong>Option:</strong> Only one carousel at the time ?-->
+                <div class="input-group check">
+                    <input type="checkbox" id="unselectothers" ng-model="vm.options.unselectOthers" />
+                    <label for="unselectothers">Only 1 carousel active at the same time?</label>
+                </div>
+            </div>
+
+            <main>
+                <section>
+                    <h2>Text</h2>
+
+                    <div id="carousel-1" class="carousel-wrapper">
+                        <div class="info">Center on select, align left</div>
+                        <a-carousel
+                                item-directive="carousel-text-item"
+                                carousel-options="::vm.carouselOptions1"
+                                array-provider="::vm.carouselData1"
+                                on-select="vm.onSelectCarousel(item)">
+                        </a-carousel>
+                    </div>
+
+                    <div id="carousel-2" class="carousel-wrapper">
+                        <div class="info">Center on select, align right</div>
+                        <a-carousel
+                                item-directive="carousel-text-item"
+                                carousel-options="::vm.carouselOptions2"
+                                array-provider="::vm.carouselData2"
+                                on-select="vm.onSelectCarousel(item)">
+                        </a-carousel>
+                    </div>
+
+                    <div id="carousel-3" class="carousel-wrapper">
+                        <div class="info">Don't center on select, align left, don't select at start</div>
+                        <a-carousel
+                                item-directive="carousel-text-item"
+                                carousel-options="::vm.carouselOptions3"
+                                array-provider="::vm.carouselData3"
+                                on-select="vm.onSelectCarousel(item)">
+                        </a-carousel>
+                    </div>
+                </section>
+                <section>
+                    <h2>Custom template</h2>
+                    <div id="carousel-4" class="carousel-wrapper">
+                        <a-carousel
+                                carousel-options="::vm.carouselOptions4"
+                                array-provider="::vm.carouselData4"
+                                on-select="vm.onSelectCarousel(item)">
+                        </a-carousel>
+                    </div>
+
+                    <div id="carousel-5" class="carousel-wrapper">
+                        <a-carousel
+                                carousel-options="::vm.carouselOptions5"
+                                array-provider="::vm.carouselData5"
+                                on-select="vm.onSelectCarousel(item)">
+                        </a-carousel>
+                    </div>
+                </section>
+                <section>
+                    <h2>Add items to carousel</h2>
+
+                    <div id="carousel-5" class="carousel-wrapper">
+                        <p class="pmh pmb">
+                            Pull refresh to add element at the end of carousel.
+                        </p>
+                        <a-carousel
+                                carousel-options="::vm.carouselOptions6"
+                                array-provider="::vm.carouselData6"
+                                on-select="vm.onSelectCarousel(item)">
+                        </a-carousel>
+                    </div>
+                    
+                    <div id="carousel-6" class="carousel-wrapper">
+                        <p class="pmh pmb">
+                            Click <a href="#" ng-click="vm.addItemsCarousel(4)">here</a> to add 4 items to the carousel.
+                        </p>
+                        <a-carousel
+                                carousel-options="::vm.carouselOptions7"
+                                array-provider="::vm.carouselData7"
+                                on-select="vm.onSelectCarousel(item)">
+                        </a-carousel>
+                    </div>
+                </section>
+            </main>
+        </ion-content>
+    </ion-pane>
+</body>
+</html>
