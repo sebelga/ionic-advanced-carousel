@@ -16,6 +16,7 @@
             controller      : Controller,
             controllerAs    : 'vm',
             bindToController: {
+                carouselId     :'@',
                 itemDirective  : '@',
                 carouselOptions: '=',
                 arrayProvider  : '=',
@@ -157,7 +158,9 @@
 
         function activate() {
             angular.extend(vm.options, vm.carouselOptions);
-
+            if (vm.carouselId) {
+                vm.options.carouselId = vm.carouselId
+            }
             $scope.$on('a-carousel.arrayupdated', onArrayProviderUpdated);
             $scope.$on('a-carousel.desactivateItem', desactiveItemSelected);
 
