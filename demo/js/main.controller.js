@@ -73,6 +73,13 @@
             template      : 'carousel-templates/demo-3.html'
         };
 
+        vm.carouselOptionsForLoop = {
+            align         : 'left',
+            selectFirst   : true,
+            centerOnSelect: true,
+            template      : 'carousel-templates/demo-1.html'
+        };
+
         vm.onSelectCarousel = onSelectCarousel;
         vm.addItemsCarousel = addItemsCarousel;
         vm.openModal        = openModal;
@@ -80,7 +87,7 @@
         activate();
 
         function activate() {
-
+            vm.prueba = 'hola!';
             // Mock data for carousel
             vm.carouselData1 = createArray(20);
             vm.carouselData2 = createArray(5);
@@ -89,6 +96,24 @@
             vm.carouselData5 = createArray(3);
             vm.carouselData6 = createArray(5, true);
             vm.carouselData7 = createArray(3, true);
+
+            vm.loopItems = [
+                {
+                    id:0,
+                    carouselId:'carousel-8',
+                    arrayData:createArray(6)
+                },
+                {
+                    id:1,
+                    carouselId:'carousel-9',
+                    arrayData:createArray(8)
+                },
+                {
+                    id:2,
+                    carouselId:'carousel-10',
+                    arrayData:createArray(4)
+                }
+            ];
 
             // To be able to use the carousel inside a modal we need to set the properties on the $scope object
             $scope.carouselOptions1 = vm.carouselOptions1;
