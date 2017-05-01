@@ -1,6 +1,9 @@
 # ionic Advanced Carousel
 Carousel directive for Ionic Frameworks that let you use any custom template as an item.
 
+### [WARNING]: this library is not maintained anymore.
+You can still use it if it fits your needs but I won't be able to give support.
+
 ## Demo
 To be able to see the demo correctly you need to see the page in device mode / mobile emulation. Instructions for
         [Chrome here](https://developer.chrome.com/devtools/docs/device-mode) and for [Firefox here](https://developer.mozilla.org/en/docs/Tools/Responsive_Design_View)
